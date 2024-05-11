@@ -28,7 +28,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/mockServiceWorker.js"
+              "src/mockServiceWorker.js",
+              "src/netlify.toml"
             ],
             "styles": [
               "src/styles.scss"

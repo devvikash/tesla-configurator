@@ -1,10 +1,16 @@
-import { CanActivateFn } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { StepValidationService } from '../services/step-validation.service';
 import { inject } from '@angular/core';
 
-export const stepThreeGuard: CanActivateFn = (route, state) => {
+export const stepThreeGuard: CanActivateFn = () => {
   const stepValidationService = inject(StepValidationService);
+  const router = inject(Router);
   const allowedToMoveStepThree = stepValidationService.isStepTwoValid();
 
-  return allowedToMoveStepThree;
+  if (allowedToMoveStepThree) {
+    return true;
+  } else {
+    router.navigateByUrl('/step-one');
+    return false;
+  }
 };
