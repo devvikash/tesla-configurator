@@ -1,0 +1,10 @@
+<header>
+    <div class="navbar">
+        <a id="step1" routerLink="/step-one" routerLinkActive="active">Step 1</a>
+        <a id="step2" [ngClass]="!stepValidationService.isStepOneValid() ? 'disabled' : null" routerLink="/step-two"
+            routerLinkActive="active">Step
+            2</a>
+        <a id="step3" [ngClass]="!stepValidationService.isStepTwoValid() ? 'disabled' : null" routerLink="/step-three"
+            routerLinkActive="active">Step 3</a>
+    </div>
+</header>

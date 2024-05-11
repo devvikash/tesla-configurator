@@ -1,0 +1,36 @@
+.car-feature-price {
+    display: flex;
+    width: 100%;
+    margin: 0.5rem;
+    flex-direction: column;
+
+    .car-configuration,
+    .car-model-price,
+    .tow-hitch,
+    .is-yoke,
+    .total-cost {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        .key,
+        .value {
+            font-size: 18px;
+            width: 50%;
+        }
+
+        .key {
+            font-weight: 600;
+        }
+    }
+
+    .car-range-and-speed {
+        display: flex;
+
+        .key {
+            font-size: 16px;
+            font-weight: 300;
+            width: 100%;
+        }
+    }
+}

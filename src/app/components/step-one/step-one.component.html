@@ -1,0 +1,30 @@
+<div class="first-step-container">
+    <h1>Step 1: Choose your Model and color</h1>
+    <form [formGroup]="stepOneFormGroup" class="tesla-car-form">
+        <div class="car-model">
+            <label for="modelSelect">Model:</label>
+            <select name="models" id="modelSelect" formControlName="carModel" (change)="onCarModelChange($event)">
+                @if (availableCarModelList.length) {
+                <option value="" selected>Choose...</option>
+                @for (model of availableCarModelList; track model?.code) {
+                <option [value]="model?.description">{{ model?.description }}</option>
+                }
+                }
+            </select>
+        </div>
+
+        @if (selectedCarModel?.colors?.length) {
+        <div class="car-color">
+            <label for="colorSelect">Color:</label>
+            <select name="color" id="colorSelect" formControlName="carColor" (change)="onCarModelColorChange($event)">
+                @for (color of selectedCarModel?.colors; track color?.code) {
+                <option [value]="color?.code">{{ color?.description }}</option>
+                }
+            </select>
+        </div>
+        }
+    </form>
+    @if(carImagePath) {
+    <app-optimized-image [imageURL]="carImagePath" [imageAlternative]="carImageAltText"></app-optimized-image>
+    }
+</div>

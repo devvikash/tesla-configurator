@@ -1,0 +1,122 @@
+<div class="third-step-container">
+    <h1>Step 3: Summary</h1>
+
+    @if (_stepValidationService.pickedCarModel()) {
+
+    <h3>Your Tesla {{ _stepValidationService.pickedCarModel()?.description }}</h3>
+
+    <div class="car-feature-price">
+        <!-- Selected configuration -->
+        @if(_stepValidationService.pickedCarConfiguration()){
+        <div class="car-configuration">
+            <span class="key">
+                {{_stepValidationService.pickedCarConfiguration()?.description}}
+            </span>
+            <span class="value">
+                {{_stepValidationService.pickedCarConfiguration()?.price | currency}}
+            </span>
+        </div>
+        <!-- Car Range and Speed Detail -->
+        <div class="car-range-and-speed">
+            <span class="key">
+                Range - {{ _stepValidationService.pickedCarConfiguration()?.range }} miles - Max speed: {{
+                _stepValidationService.pickedCarConfiguration()?.speed }}
+            </span>
+        </div>
+
+        <!-- Car model and price  -->
+        <div class="car-model-price">
+            <span class="key">
+                {{_stepValidationService.pickedCarColor()?.description}}
+            </span>
+            <span class="value">
+                {{_stepValidationService.pickedCarColor()?.price | currency}}
+            </span>
+        </div>
+        }
+
+        <!-- Is Tow Hitch Enable  -->
+        @if(_stepValidationService.isTowHitch()) {
+        <div class="tow-hitch">
+            <span class="key">Tow Hitch Package</span>
+            <span class="value">
+                {{additionalFeatureCost | currency}}
+            </span>
+        </div>
+        }
+
+        <!-- is Yoke Enabled -->
+        @if(_stepValidationService.isYoke()) {
+        <div class="is-yoke">
+            <span class="key">Yoke Package</span>
+            <span class="value">
+                {{additionalFeatureCost | currency}}
+            </span>
+        </div>
+        }
+
+        <hr>
+
+        <!-- Total Price -->
+        <div class="total-cost">
+            <span class="key">TOTAL COST</span>
+            <span class="value">
+                {{totalPrice | currency}}
+            </span>
+        </div>
+
+        <hr>
+
+    </div>
+    <!-- 
+    <table>
+        <tbody>
+            @if (step2FormState?.currentConfig) {
+            <tr>
+                <td class="option">{{ step2FormState?.currentConfig }}</td>
+                <td>{{ step2FormState?.selectedConfig?.price | currencyFormat}}</td>
+            </tr>
+            }
+
+            @if (step2FormState?.selectedConfig?.range) {
+            <tr>
+                <td>Range - {{ step2FormState?.selectedConfig?.range }} miles - Max speed: {{
+                    step2FormState?.selectedConfig?.speed }}</td>
+            </tr>
+            }
+
+            @if (step1FormState?.selectedColor?.description) {
+            <tr>
+                <td class="option">{{ step1FormState?.selectedColor?.description }}</td>
+                <td> {{ step1FormState?.selectedColor?.price | currencyFormat}}</td>
+            </tr>
+            }
+
+            @if (step2FormState?.towHitch) {
+            <tr>
+                <td class="option">Tow Hitch Package</td>
+                <td>{{ OPTION_UPSELL_PRICE | currencyFormat }}</td>
+            </tr>
+            }
+
+            @if (step2FormState?.yoke) {
+            <tr>
+                <td class="option">Yoke Package</td>
+                <td>{{ OPTION_UPSELL_PRICE | currencyFormat }}</td>
+            </tr>
+            }
+
+            @if (totalPrice) {
+            <tr class="bordered">
+                <td class="total">total cost</td>
+                <td>{{ totalPrice | currencyFormat }}</td>
+            </tr>
+            }
+        </tbody>
+    </table> -->
+
+    @if(carImagePath) {
+    <app-optimized-image [imageURL]="carImagePath" [imageAlternative]="carImageAltText"></app-optimized-image>
+    }
+    }
+</div>
